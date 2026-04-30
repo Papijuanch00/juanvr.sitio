@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JuanVR | Realidad Virtual Madrid | Sesiones VR + Eventos + Empresas</title>
+    <meta name="description" content="JuanVR: Centro de Realidad Virtual en Madrid con 100+ experiencias VR. Sesiones personalizadas, eventos y teambuilding. Desde €19. ¡Reserva ahora!">
+    <meta name="keywords" content="realidad virtual madrid, vr madrid, sesiones vr, eventos vr, teambuilding vr, realidad virtual eventos">
+    <meta property="og:title" content="JuanVR | La Mejor Realidad Virtual de Madrid">
+    <meta property="og:description" content="Vive experiencias VR inmersivas. 100+ juegos. Sesiones desde €19. Reserva tu sesión hoy.">
+    <meta property="og:type" content="website">
+    <meta name="author" content="JuanVR">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #001a4d;
+            --primary-light: #003d99;
+            --secondary: #0066cc;
+            --accent: #ff5722;
+            --light: #f5f5f5;
+            --dark: #1a1a1a;
+            --text: #333;
+            --border: #ddd;
+            --success: #4caf50;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: #fff;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-icon {
+            font-size: 2rem;
+        }
+
+        nav {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: opacity 0.3s;
+            position: relative;
+        }
+
+        nav a:hover::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--accent);
+        }
+
+        .btn {
+            background: var(--accent);
+            color: white;
+            padding: 0.75rem 1.8rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 87, 34, 0.3);
+            background: #e64a19;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--primary);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--accent);
+            color: var(--accent);
+        }
+
+        .btn-outline:hover {
+            background: var(--accent);
+            color: white;
+        }
+
+        /* ===== CONTAINER ===== */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 50%, var(--secondary) 100%);
+            color: white;
+            padding: 7rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -100px;
+            width: 400px;
+            height: 400px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 50%;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            left: -100px;
+            width: 300px;
+            height: 300px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 50%;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.5;
+        }
+
+        .hero-features {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+            font-size: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-feature {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .hero-feature-icon {
+            font-size: 1.5rem;
+        }
+
+        /* ===== SECCIÓN DESTACADA ===== */
+        .highlight-section {
+            padding: 5rem 2rem;
+            background: var(--light);
+        }
+
+        .section-title {
+            font-size: 2.8rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        /* ===== GRID SERVICIOS ===== */
+        .servicios-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .servicio-card {
+            background: white;
+            padding: 2.5rem 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+            border: 2px solid transparent;
+            position: relative;
+        }
+
+        .servicio-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--secondary), var(--accent));
+            border-radius: 12px 12px 0 0;
+        }
+
+        .servicio-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+            border-color: var(--secondary);
+        }
+
+        .servicio-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .servicio-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .servicio-card p {
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+
+        .servicio-card a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .servicio-card a:hover {
+            color: var(--accent);
+        }
+
+        /* ===== CARACTERÍSTICAS ===== */
+        .caracteristicas {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .caracteristica {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+        }
+
+        .caracteristica:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .caracteristica-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .caracteristica h3 {
+            color: var(--primary);
+            margin-bottom: 0.8rem;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .caracteristica p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* ===== CTA SECTION ===== */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 5rem 2rem;
+            text-align: center;
+            margin: 4rem 0;
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 50%;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-buttons .btn {
+            min-width: 200px;
+            padding: 1rem 2rem;
+        }
+
+        /* ===== FAQ ===== */
+        .faq-section {
+            padding: 5rem 2rem;
+            background: var(--light);
+        }
+
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: white;
+            margin-bottom: 1.5rem;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: box-shadow 0.3s;
+        }
+
+        .faq-item:hover {
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .faq-header {
+            padding: 1.8rem;
+            background: #f9f9f9;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s;
+            border-left: 4px solid var(--secondary);
+        }
+
+        .faq-header:hover {
+            background: #f0f0f0;
+        }
+
+        .faq-header h3 {
+            color: var(--primary);
+            font-size: 1.1rem;
+            margin: 0;
+            font-weight: 600;
+        }
+
+        .faq-header .toggle {
+            font-size: 1.2rem;
+            transition: transform 0.3s;
+            color: var(--secondary);
+        }
+
+        .faq-item.active .toggle {
+            transform: rotate(180deg);
+        }
+
+        .faq-content {
+            padding: 0 1.8rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item.active .faq-content {
+            padding: 1.8rem;
+            max-height: 500px;
+        }
+
+        .faq-content p {
+            color: #666;
+            line-height: 1.8;
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1.5rem;
+            color: var(--secondary);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            font-size: 0.9rem;
+            line-height: 2;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--secondary);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #444;
+            padding-top: 2rem;
+            text-align: center;
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            nav {
+                gap: 1rem;
+                font-size: 0.85rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .hero-features {
+                gap: 1.5rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cta-buttons .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            header {
+                padding: 1rem;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* ===== ANIMACIONES ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .servicio-card {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .servicio-card:nth-child(1) { animation-delay: 0.1s; }
+        .servicio-card:nth-child(2) { animation-delay: 0.2s; }
+        .servicio-card:nth-child(3) { animation-delay: 0.3s; }
+
+        .caracteristica {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .caracteristica:nth-child(1) { animation-delay: 0.1s; }
+        .caracteristica:nth-child(2) { animation-delay: 0.2s; }
+        .caracteristica:nth-child(3) { animation-delay: 0.3s; }
+        .caracteristica:nth-child(4) { animation-delay: 0.4s; }
+        .caracteristica:nth-child(5) { animation-delay: 0.5s; }
+        .caracteristica:nth-child(6) { animation-delay: 0.6s; }
+    </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+    <div class="header-content">
+        <div class="logo">
+            <span class="logo-icon">🎮</span>
+            <span>JuanVR</span>
+        </div>
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="sesiones.html">Sesiones</a>
+            <a href="eventos.html">Eventos</a>
+            <a href="empresas.html">Empresas</a>
+            <a href="contacto.html">Contacto</a>
+            <a href="#reservar" class="btn">Reservar</a>
+        </nav>
+    </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <h1>La Mejor Realidad Virtual de Madrid</h1>
+            <p class="hero-subtitle">Más de 100 experiencias VR en un centro de 900m². Sesiones personalizadas, eventos corporativos y teambuilding. Desde €19.</p>
+            
+            <div class="hero-features">
+                <div class="hero-feature">
+                    <span class="hero-feature-icon">✓</span>
+                    <span>100+ Experiencias VR</span>
+                </div>
+                <div class="hero-feature">
+                    <span class="hero-feature-icon">✓</span>
+                    <span>Desde €19</span>
+                </div>
+                <div class="hero-feature">
+                    <span class="hero-feature-icon">✓</span>
+                    <span>Atención Personalizada</span>
+                </div>
+            </div>
+
+            <a href="#reservar" class="btn" style="margin-top: 2rem; padding: 1rem 2.5rem; font-size: 1.1rem;">Reserva Tu Sesión Ahora</a>
+        </div>
+    </div>
+</section>
+
+<!-- SERVICIOS -->
+<section class="highlight-section">
+    <div class="container">
+        <h2 class="section-title">Nuestros Servicios</h2>
+        <p class="section-subtitle">Elige la experiencia que más te guste</p>
+        
+        <div class="servicios-grid">
+            <div class="servicio-card">
+                <div class="servicio-icon">🎮</div>
+                <h3>Sesiones VR Personalizadas</h3>
+                <p>Elige entre Play (multiexperiencia) o Story (aventuras premium). Sesiones de 30 a 120 minutos. Solo, en pareja o en grupo de hasta 20 personas.</p>
+                <a href="sesiones.html">Explorar sesiones →</a>
+            </div>
+
+            <div class="servicio-card">
+                <div class="servicio-icon">🎉</div>
+                <h3>Eventos y Celebraciones</h3>
+                <p>Cumpleaños, despedidas, celebraciones corporativas. Personalización total con decoración, catering y sorpresas. Desde 4 hasta 90+ personas.</p>
+                <a href="eventos.html">Ver eventos →</a>
+            </div>
+
+            <div class="servicio-card">
+                <div class="servicio-icon">💼</div>
+                <h3>Soluciones Empresariales</h3>
+                <p>Teambuilding, presentaciones, activaciones de marca. Experiencia B2B con Realidad Aumentada, 360 e Inteligencia Artificial avanzada.</p>
+                <a href="empresas.html">Más información →</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- POR QUÉ ELEGIRNOS -->
+<section class="highlight-section" style="background: white;">
+    <div class="container">
+        <h2 class="section-title">Por Qué Elegir JuanVR</h2>
+        
+        <div class="caracteristicas">
+            <div class="caracteristica">
+                <div class="caracteristica-icon">🎮</div>
+                <h3>100+ Experiencias</h3>
+                <p>La oferta más amplia de Realidad Virtual. Desde acción y aventura hasta puzzles educativos, para todos los gustos y edades.</p>
+            </div>
+
+            <div class="caracteristica">
+                <div class="caracteristica-icon">📍</div>
+                <h3>Centro de 900m²</h3>
+                <p>Ubicación céntrica y accesible. Fácil acceso por metro y autobús. Múltiples salas para grupos grandes y eventos.</p>
+            </div>
+
+            <div class="caracteristica">
+                <div class="caracteristica-icon">💰</div>
+                <h3>Precios Competitivos</h3>
+                <p>Sesiones desde €19. La mejor relación precio/calidad del mercado. Sin compartir visores, equipos de última generación.</p>
+            </div>
+
+            <div class="caracteristica">
+                <div class="caracteristica-icon">👥</div>
+                <h3>Atención Personalizada</h3>
+                <p>Monitor dedicado en cada sesión. Adaptamos la experiencia totalmente a ti. Apto para todas las edades, desde 7 años.</p>
+            </div>
+
+            <div class="caracteristica">
+                <div class="caracteristica-icon">🏆</div>
+                <h3>Expertos en Eventos</h3>
+                <p>Miles de clientes satisfechos. Equipo profesional con años de experiencia. Personalizamos cada detalle de tu evento.</p>
+            </div>
+
+            <div class="caracteristica">
+                <div class="caracteristica-icon">🚀</div>
+                <h3>Tecnología de Punta</h3>
+                <p>Equipos VR última generación. RA, 360, IA para soluciones B2B avanzadas. Innovación constante en experiencias.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="container">
+    <div class="cta-section" id="reservar">
+        <div class="cta-content">
+            <h2>¿Listo para Vivir la Realidad Virtual?</h2>
+            <p>Reserva tu sesión hoy y experimenta una aventura inolvidable en nuestro centro.</p>
+            <div class="cta-buttons">
+                <a href="contacto.html" class="btn">Reservar Sesión</a>
+                <a href="contacto.html" class="btn btn-secondary">Contactar</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+    <div class="container">
+        <h2 class="section-title">Preguntas Frecuentes</h2>
+        
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-header">
+                    <h3>¿Cuál es la edad mínima para usar VR?</h3>
+                    <span class="toggle">▼</span>
+                </div>
+                <div class="faq-content">
+                    <p>La edad mínima es 7 años para sesiones Play y 9 años para sesiones Story. Los menores de 15 años deben venir acompañados de un adulto responsable. No hay limitaciones de peso ni altura.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-header">
+                    <h3>¿Cuánto tiempo dura una sesión?</h3>
+                    <span class="toggle">▼</span>
+                </div>
+                <div class="faq-content">
+                    <p>Las sesiones duran de 30 a 120 minutos, según tus preferencias. Recomendamos un mínimo de 60 minutos para disfrutar plenamente de las experiencias más inmersivas.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-header">
+                    <h3>¿Necesito experiencia previa en VR?</h3>
+                    <span class="toggle">▼</span>
+                </div>
+                <div class="faq-content">
+                    <p>No es necesaria. Nuestros monitores te guiarán paso a paso en cada experiencia. Apto tanto para principiantes como para expertos en videojuegos y realidad virtual.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-header">
+                    <h3>¿Cuál es el precio de una sesión?</h3>
+                    <span class="toggle">▼</span>
+                </div>
+                <div class="faq-content">
+                    <p>Desde €19 por sesión básica. Sesiones Story premium desde €25. Grupos y eventos corporativos tienen tarifas especiales. Consulta nuestras tarifas completas en la sección de sesiones.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-header">
+                    <h3>¿Puedo traer gafas o lentillas?</h3>
+                    <span class="toggle">▼</span>
+                </div>
+                <div class="faq-content">
+                    <p>Sí, puedes usar lentes de contacto normalmente. Si usas gafas, recomendamos lentillas para mayor comodidad dentro de los visores VR.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-content">
+        <div class="footer-section">
+            <h3>📍 Ubicación</h3>
+            <p>Calle Ficticia 123<br>28001 Madrid<br>España<br><br>Distrito: Centro<br>Zona: Acceso fácil</p>
+        </div>
+
+        <div class="footer-section">
+            <h3>📞 Contacto</h3>
+            <p>Teléfono: +34 912 345 678<br>Email: info@juanvr-demo.com<br>WhatsApp: Disponible 24/7<br>Telegram: @juanvr_oficial</p>
+        </div>
+
+        <div class="footer-section">
+            <h3>⏰ Horario</h3>
+            <p>Lunes-Jueves: 16:00 - 22:00<br>Viernes: 16:00 - 23:00<br>Sábado: 11:00 - 23:00<br>Domingo: 11:00 - 22:00<br><br>Solo con cita previa</p>
+        </div>
+
+        <div class="footer-section">
+            <h3>🔗 Enlaces</h3>
+            <p><a href="index.html">Inicio</a><br>
+            <a href="sesiones.html">Sesiones VR</a><br>
+            <a href="eventos.html">Eventos</a><br>
+            <a href="empresas.html">Empresas</a><br>
+            <a href="contacto.html">Contacto</a></p>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>© 2025 JuanVR. Realidad Virtual Madrid. Modelo educativo para demostración SEO.</p>
+    </div>
+</footer>
+
+<script>
+    // FAQ Toggle
+    document.querySelectorAll('.faq-header').forEach(header => {
+        header.addEventListener('click', function() {
+            const item = this.parentElement;
+            
+            // Cerrar otros items
+            document.querySelectorAll('.faq-item.active').forEach(active => {
+                if (active !== item) {
+                    active.classList.remove('active');
+                }
+            });
+            
+            item.classList.toggle('active');
+        });
+    });
+
+    // Smooth scroll para navegación
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            if (this.getAttribute('href') !== '#') {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({behavior: 'smooth'});
+                }
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

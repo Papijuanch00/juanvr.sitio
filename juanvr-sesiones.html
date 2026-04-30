@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sesiones VR Madrid | Play y Story | JuanVR</title>
+    <meta name="description" content="Sesiones de Realidad Virtual en Madrid. Play (multiexperiencia) y Story (aventuras premium). 30-120 minutos. Desde €19. ¡Reserva ahora!">
+    <meta name="keywords" content="sesiones vr madrid, realidad virtual madrid, juegos vr, experiencias vr, reservar vr">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #001a4d;
+            --primary-light: #003d99;
+            --secondary: #0066cc;
+            --accent: #ff5722;
+            --light: #f5f5f5;
+            --dark: #1a1a1a;
+            --text: #333;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: #fff;
+        }
+
+        /* HEADER */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        nav {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+        }
+
+        .btn {
+            background: var(--accent);
+            color: white;
+            padding: 0.75rem 1.8rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 87, 34, 0.3);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* BREADCRUMB */
+        .breadcrumb {
+            background: var(--light);
+            padding: 1rem 2rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .breadcrumb a {
+            color: var(--secondary);
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        /* HERO */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 50%, var(--secondary) 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* SESIONES TIPOS */
+        .sesiones-section {
+            padding: 5rem 2rem;
+        }
+
+        .section-title {
+            font-size: 2.8rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .sesiones-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .sesion-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: all 0.4s;
+            border-top: 5px solid var(--secondary);
+        }
+
+        .sesion-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+        }
+
+        .sesion-header {
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .sesion-header h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .sesion-price {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .sesion-content {
+            padding: 2rem;
+        }
+
+        .sesion-feature {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .sesion-feature-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .sesion-feature p {
+            color: #666;
+            margin: 0;
+        }
+
+        .sesion-feature strong {
+            color: var(--primary);
+        }
+
+        .btn-sesion {
+            width: 100%;
+            padding: 1rem;
+            background: var(--secondary);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 1.5rem;
+        }
+
+        .btn-sesion:hover {
+            background: var(--accent);
+            transform: scale(1.02);
+        }
+
+        /* EXPERIENCIAS */
+        .experiencias-section {
+            padding: 5rem 2rem;
+            background: var(--light);
+        }
+
+        .experiencias-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .experiencia-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+
+        .experiencia-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .experiencia-item h4 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .experiencia-item p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 4rem 2rem 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1.5rem;
+            color: var(--secondary);
+            font-weight: 700;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            font-size: 0.9rem;
+            line-height: 2;
+        }
+
+        .footer-section a:hover {
+            color: var(--secondary);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #444;
+            padding-top: 2rem;
+            text-align: center;
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            nav {
+                gap: 1rem;
+                font-size: 0.85rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+    <div class="header-content">
+        <div class="logo">
+            <span>🎮</span>
+            <span>JuanVR</span>
+        </div>
+        <nav>
+            <a href="juanvr-index.html">Inicio</a>
+            <a href="juanvr-sesiones.html">Sesiones</a>
+            <a href="juanvr-eventos.html">Eventos</a>
+            <a href="juanvr-empresas.html">Empresas</a>
+            <a href="juanvr-contacto.html">Contacto</a>
+            <a href="juanvr-contacto.html" class="btn">Reservar</a>
+        </nav>
+    </div>
+</header>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+    <div class="container">
+        <a href="juanvr-index.html">Inicio</a> / Sesiones VR
+    </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="container">
+        <h1>Sesiones de Realidad Virtual</h1>
+        <p>Elige tu experiencia perfecta: Play o Story. De 30 a 120 minutos. Individual, en pareja o en grupo.</p>
+    </div>
+</section>
+
+<!-- TIPOS SESIONES -->
+<section class="sesiones-section">
+    <div class="container">
+        <h2 class="section-title">Tipos de Sesiones</h2>
+
+        <div class="sesiones-grid">
+            <!-- PLAY -->
+            <div class="sesion-card">
+                <div class="sesion-header">
+                    <h3>🎮 Play</h3>
+                    <div class="sesion-price">Desde €19</div>
+                </div>
+                <div class="sesion-content">
+                    <div class="sesion-feature">
+                        <span class="sesion-feature-icon">⏱️</span>
+                        <p><strong>Duración:</strong> 30-120 minutos</p>
+                    </div>
+                    <div class="sesion-feature">
+                        <span class="sesion-feature-icon">🎯</span>
+                        <p><strong>Tipo:</strong> Multiexperiencia variada</p>
+                    </div>
+                    <div class="sesion-feature">
+                        <span class="sesion-feature-icon">👥</span>
+                        <p><strong>Participantes:</strong> 1-20 personas</p>
+                    </div>
+                    <div class="sesion-feature">
+                        <span class="sesion-feature-icon">🎪</span>
+                        <p><strong>Contenido:</strong> Más de 60 experiencias diferentes</p>
+                    </div>
+                    <div class="sesion-feature">
+                        <span class="sesion-feature-icon">🎂</span>
+                        <p><strong>Ideal para:</strong> Principiantes, grupos variados</p>
+                    </div>
+                    <button class="btn-sesion">Reservar Play</button>
+                </div>
+            </div>
+
+            <!-- STORY -->
+            <div class="sesion-card">
+                <div class="sesion-header">
+                    <h3>🎬 Story</h3>
+                    <div class="sesion-price">Desde €25</div>
+                </div>
+                <div class="sesion-content">
+                    <div class="sesion-feature">
+                        <span class="sesion-feature-icon">⏱️</span>
+                        <p><strong>Duración:</strong> 30-120 minutos</p>
+                    </div>
+                    <div class="sesion-feature">
+                        <span class="sesion-feature-icon">🎯</span>
+                        <p><strong>Tipo:</strong> Aventuras premium con historia</p>
+                    </div>
+                    <div class="sesion-feature">
+                        <span class="sesion-feature-icon">👥</span>
+                        <p><strong>Participantes:</strong> 1-20 personas</p>
+                    </div>
+                    <div class="sesion-feature">
+                        <span class="sesion-feature-icon">🏆</span>
+                        <p><strong>Contenido:</strong> Más de 30 experiencias premium</p>
+                    </div>
+                    <div class="sesion-feature">
+                        <span class="sesion-feature-icon">🎯</span>
+                        <p><strong>Ideal para:</strong> Experiencias largas e inmersivas</p>
+                    </div>
+                    <button class="btn-sesion">Reservar Story</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- EXPERIENCIAS DISPONIBLES -->
+<section class="experiencias-section">
+    <div class="container">
+        <h2 class="section-title">Experiencias Disponibles</h2>
+
+        <div class="experiencias-grid">
+            <div class="experiencia-item">
+                <div class="experiencia-icon">🎮</div>
+                <h4>Acción</h4>
+                <p>Shooters adrenalina, carreras, combates épicos</p>
+            </div>
+            <div class="experiencia-item">
+                <div class="experiencia-icon">🎪</div>
+                <h4>Aventura</h4>
+                <p>Exploración, puzzles, historias envolventes</p>
+            </div>
+            <div class="experiencia-item">
+                <div class="experiencia-icon">😱</div>
+                <h4>Terror</h4>
+                <p>Experiencias de miedo controlado, suspenso</p>
+            </div>
+            <div class="experiencia-item">
+                <div class="experiencia-icon">🔓</div>
+                <h4>Escape Rooms</h4>
+                <p>Acertijos inmersivos para resolver en equipo</p>
+            </div>
+            <div class="experiencia-item">
+                <div class="experiencia-icon">🏃</div>
+                <h4>Deportes</h4>
+                <p>Deportes virtuales, competencias, desafíos</p>
+            </div>
+            <div class="experiencia-item">
+                <div class="experiencia-icon">🧘</div>
+                <h4>Relajación</h4>
+                <p>Experiencias meditativas y contemplativas</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-content">
+        <div class="footer-section">
+            <h3>📍 Ubicación</h3>
+            <p>Calle Ficticia 123<br>28001 Madrid</p>
+        </div>
+        <div class="footer-section">
+            <h3>📞 Contacto</h3>
+            <p>+34 912 345 678<br>info@juanvr-demo.com</p>
+        </div>
+        <div class="footer-section">
+            <h3>⏰ Horario</h3>
+            <p>Lunes-Jueves: 16:00 - 22:00<br>Viernes: 16:00 - 23:00<br>Sábado: 11:00 - 23:00<br>Domingo: 11:00 - 22:00</p>
+        </div>
+        <div class="footer-section">
+            <h3>🔗 Enlaces</h3>
+            <p><a href="juanvr-index.html">Inicio</a><br>
+            <a href="juanvr-sesiones.html">Sesiones</a><br>
+            <a href="juanvr-eventos.html">Eventos</a><br>
+            <a href="juanvr-contacto.html">Contacto</a></p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2025 JuanVR. Realidad Virtual Madrid.</p>
+    </div>
+</footer>
+
+</body>
+</html>
